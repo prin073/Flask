@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo App</title>
+</head>
+<body>
+
+    <h1><U><B>ToDo List</B></U></h1>
+    <br>
+    <div>Add a new to do item
+        <form action="/add" method="POST">
+            <input type="text" name="todoitem">
+            <input type="submit" value="Add Item">
+        </form>
+    </div>
+
+    <div style="font-size: 20pt">
+        <form action="{{ url_for('update') }}" method="POST">
+            <br>
+            {% for todo in incomplete %}
+            <input type="checkbox" name="todo_chkbox" value="{{todo.id}}" ><I>{{todo.text}}</I>I
+                <br>
+            {% endfor %}
+
+            <input type="submit" name = "update_button" value="Complete Item">
+            <input type="submit" name = "update_button" value="Delete Item">
+        </form>
+
+    </div>
+
+   <div style="font-size: 20pt">
+        <h5><U>Completed Items</U></h5>
+        <ul>
+            {% for todo in complete %}
+            <li><I>{{todo.text}}</I></li>
+             {% endfor %}
+        </ul>
+
+    </div>
+
+</body>
+</html>
