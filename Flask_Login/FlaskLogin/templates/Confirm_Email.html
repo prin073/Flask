@@ -1,0 +1,26 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block title %}
+    Confirm Email
+{% endblock %}
+
+{% block styles %}
+    {{super()}}
+    <link rel="stylesheet" href="{{url_for('.static', filename='sign.css')}}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form class="form-signin" action="{{ url_for('confirm_email', token=token) }}" method="POST">
+            <h1 class="form-signin-heading">Reset password</h1>
+            {{ form.hidden_tag() }}
+            <br>
+            {{ wtf.form_field(form.password) }}
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+        </form>
+
+    </div>
+
+{% endblock %}

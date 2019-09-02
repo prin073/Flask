@@ -1,21 +1,21 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
+from flask_mail import Mail, Message
+from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadTimeSignature
+
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # To silent the warning message
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///login.db'
-
-app.config['SQLALCHEMY_ECHO'] = True
-
-app.config['SECRET_KEY'] = 'ITISASECRET'
-
+app.config.from_pyfile('Config/configuration.cfg') #loading the configurations
 
 Bootstrap(app)
+
 db = SQLAlchemy(app)
+
+mail = Mail(app)
+serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 
 
 #this is the last step in login application development

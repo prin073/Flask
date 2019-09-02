@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard</title>
-</head>
-<body>
-<h1>Welcome {{ name }}, to the Dashboard</h1>
-<br>
-<a href= "{{ url_for('logout') }}">Log out</a>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
+
+        <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <title>Dashboard</title>
+    </head>
+    <body>
+        <div class=".container">
+            <p class="bg-primary text-center">
+
+                <B>Welcome {{ name }}, to the Dashboard</B>
+            </p>
+        </div>
+        <a href="{{ url_for('logout') }}">Logout</a>
+        <br>
+        <a href="https://www.facebook.com">Facebook</a>
+    </body>
 </html>
