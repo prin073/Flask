@@ -1,1 +1,1 @@
-# This repo will contain Flask realted projects.
+# This repo will contain Flask related projects.
